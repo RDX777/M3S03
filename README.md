@@ -269,8 +269,35 @@ Não foram implementados testes
 - [Node.js](https://nodejs.org/)
 - [Javascript](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript)
 - [NestJS](https://nestjs.com)
+- [Swagger for NestJS](https://docs.nestjs.com/openapi/introduction)
 - [TypeORM](https://typeorm.io)
 - [TypeScript](https://www.typescriptlang.org)
 - [Postgres](https://www.postgresql.org)
+
+## Demostrativo da tela implementação swagger
+
+### Tela 1
+
+<h1 align="center">
+  <img alt="Tela 1" src="./imagens/swagger1.png" />
+</h1>
+
+### Tela 2
+
+<h1 align="center">
+  <img alt="Tela 2" src="./imagens/swagger2.png" />
+</h1>
+
+### Tela 3
+
+<h1 align="center">
+  <img alt="Tela 3" src="./imagens/swagger3.png" />
+</h1>
+
+### Tela 4
+
+<h1 align="center">
+  <img alt="Tela 3" src="./imagens/swagger4.png" />
+</h1>
 
 Nest is [MIT licensed](LICENSE).
