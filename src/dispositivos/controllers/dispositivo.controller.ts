@@ -1,10 +1,13 @@
 import { Controller, Get, UseGuards, Request, Query, Post, Body, HttpStatus, Param } from "@nestjs/common";
+import { ApiBearerAuth, ApiParam, ApiTags } from "@nestjs/swagger";
 import { JwtAuthGuard } from "src/core/auth/guards/jwt-auth.guard";
 import { RespostaHttpService } from "src/core/http/services/resposta-http.service";
 import { VinculoDispositivoInDto } from "../dtos/vinculo-dispositivo-in.dto";
 import { DispositivoService } from "../services/dispositivo.services";
 
 @UseGuards(JwtAuthGuard)
+@ApiBearerAuth()
+@ApiTags('dispositivo')
 @Controller('dispositivo')
 export class DispositivoController {
 
@@ -32,6 +35,7 @@ export class DispositivoController {
     });
   }
 
+  @ApiParam({ name: "idDispositivo", description: "ID do sispositivo", example: "1" })
   @Get("detalhe/:idDispositivo")
   public async detalhe(@Request() request: any, @Param() parametro: object) {
     if (parametro) {

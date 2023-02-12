@@ -6,9 +6,11 @@ import { AuthService } from "../services/auth.service";
 import { UsuarioService } from "src/usuarios/services/usuario.service";
 import { NestResponse } from "src/core/http/nest-response";
 import { NestResponseBuilder } from "src/core/http/nest-response-builder";
+import { ApiTags } from "@nestjs/swagger";
 
 //@UseGuards(JwtAuthGuard) //Autenticação
 // @Roles("") // Autorização
+@ApiTags('auth')
 @Controller("auth")
 export class AuthController {
 

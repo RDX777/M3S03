@@ -2,7 +2,9 @@ import { Body, Controller, HttpException, HttpStatus, Post } from '@nestjs/commo
 import { CriaUsuarioDto } from '../dtos/cria-usuario.dto';
 import { UsuarioService } from '../services/usuario.service';
 import { RespostaHttpService } from "src/core/http/services/resposta-http.service";
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('usuario')
 @Controller('usuario')
 export class UsuarioSemAuthController {
 

@@ -3,8 +3,11 @@ import { JwtAuthGuard } from 'src/core/auth/guards/jwt-auth.guard';
 import { TrocaSenhaDto } from '../dtos/troca-senha.dto';
 import { UsuarioService } from '../services/usuario.service';
 import { RespostaHttpService } from "src/core/http/services/resposta-http.service";
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 
 @UseGuards(JwtAuthGuard)
+@ApiBearerAuth()
+@ApiTags('usuario')
 @Controller('usuario')
 export class UsuarioComAuthController {
 
