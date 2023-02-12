@@ -1,9 +1,10 @@
 import { Controller, Get, UseGuards, Request, Query, Post, Body, HttpStatus, Param } from "@nestjs/common";
-import { ApiBearerAuth, ApiParam, ApiTags } from "@nestjs/swagger";
+import { ApiBearerAuth, ApiParam, ApiTags, ApiOperation, ApiBody } from "@nestjs/swagger";
 import { JwtAuthGuard } from "src/core/auth/guards/jwt-auth.guard";
 import { RespostaHttpService } from "src/core/http/services/resposta-http.service";
 import { VinculoDispositivoInDto } from "../dtos/vinculo-dispositivo-in.dto";
 import { DispositivoService } from "../services/dispositivo.services";
+import { RetornoDispositivoDto } from "../dtos/retorno-dispositivos.dto";
 
 @UseGuards(JwtAuthGuard)
 @ApiBearerAuth()
@@ -14,6 +15,7 @@ export class DispositivoController {
   constructor(private dispositivoService: DispositivoService,
     private respostaHttp: RespostaHttpService) { }
 
+  @ApiOperation({ summary: "Lista os dispositivos" })
   @Get("listar")
   public async listar(@Request() request: any, @Query('local') local: string) {
 
@@ -26,6 +28,8 @@ export class DispositivoController {
 
   }
 
+  @ApiOperation({ summary: "Vincula um dispositivo a um IP" })
+  @ApiBody({ type: VinculoDispositivoInDto })
   @Post("vincular")
   public async vincular(@Request() request: any, @Body() body: VinculoDispositivoInDto) {
     return await this.dispositivoService.vincular(request.user, body).then((resposta) => {
@@ -35,7 +39,8 @@ export class DispositivoController {
     });
   }
 
-  @ApiParam({ name: "idDispositivo", description: "ID do sispositivo", example: "1" })
+  @ApiOperation({ summary: "Mostra detalhes de um dispositivo" })
+  @ApiParam({ name: "idDispositivo", description: "ID do dispositivo", example: "1" })
   @Get("detalhe/:idDispositivo")
   public async detalhe(@Request() request: any, @Param() parametro: object) {
     if (parametro) {

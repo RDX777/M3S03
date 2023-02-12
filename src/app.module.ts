@@ -6,6 +6,7 @@ import { TransformResponseInterceptor } from './core/http/transform-response-int
 import { AuthModule } from './core/auth/auth.module';
 import { UsuarioModule } from './usuarios/usuario.module';
 import { DispositivoModule } from './dispositivos/dispositivo.module';
+import { AppController } from './app.controller';
 
 @Module({
   imports: [
@@ -17,7 +18,7 @@ import { DispositivoModule } from './dispositivos/dispositivo.module';
     DispositivoModule,
     AuthModule,
   ],
-  controllers: [],
+  controllers: [AppController],
   providers: [
     {
       provide: APP_INTERCEPTOR,

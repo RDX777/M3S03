@@ -2,7 +2,7 @@ import { Body, Controller, HttpException, HttpStatus, Post } from '@nestjs/commo
 import { CriaUsuarioDto } from '../dtos/cria-usuario.dto';
 import { UsuarioService } from '../services/usuario.service';
 import { RespostaHttpService } from "src/core/http/services/resposta-http.service";
-import { ApiTags } from '@nestjs/swagger';
+import { ApiTags, ApiOperation, ApiBody } from '@nestjs/swagger';
 
 @ApiTags('usuario')
 @Controller('usuario')
@@ -11,6 +11,8 @@ export class UsuarioSemAuthController {
   constructor(private usuarioService: UsuarioService,
     private respostaHttp: RespostaHttpService) { }
 
+  @ApiOperation({ summary: "Realiza o cadastro de um novo usuario" })
+  @ApiBody({ type: CriaUsuarioDto })
   @Post("cadastra")
   public async store(@Body() usuario: CriaUsuarioDto) {
     return await this.usuarioService.store(usuario).then(() => {

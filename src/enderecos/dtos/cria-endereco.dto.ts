@@ -10,12 +10,12 @@ export class CriaEnderecoDto {
 
   @IsNotEmpty()
   @IsString()
-  @ApiProperty({ name: "logradouro", "example": "logradouro", "type": "string" })
+  @ApiProperty({ name: "logradouro", "example": "nome do logradouro", "type": "string" })
   readonly logradouro: string;
 
   @IsNumber()
   @IsNotEmpty()
-  @ApiProperty({ name: "logradouro", "example": "123", "type": "number" })
+  @ApiProperty({ name: "numero", "example": 123, "type": "number" })
   readonly numero: number;
 
   @IsNotEmpty()

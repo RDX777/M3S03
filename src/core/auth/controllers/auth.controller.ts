@@ -6,7 +6,7 @@ import { AuthService } from "../services/auth.service";
 import { UsuarioService } from "src/usuarios/services/usuario.service";
 import { NestResponse } from "src/core/http/nest-response";
 import { NestResponseBuilder } from "src/core/http/nest-response-builder";
-import { ApiTags } from "@nestjs/swagger";
+import { ApiBody, ApiOperation, ApiTags } from "@nestjs/swagger";
 
 //@UseGuards(JwtAuthGuard) //Autenticação
 // @Roles("") // Autorização
@@ -17,6 +17,8 @@ export class AuthController {
   constructor(
     private readonly authService: AuthService) { }
 
+  @ApiOperation({ summary: "Cria token para acesso" })
+  @ApiBody({ type: CredenciaisDTO })
   @Post("token/cria")
   public async criaToken(@Body() credenciais: CredenciaisDTO) {
     const token = await this.authService.criaToken(credenciais);

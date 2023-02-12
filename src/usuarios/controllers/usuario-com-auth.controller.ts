@@ -3,7 +3,7 @@ import { JwtAuthGuard } from 'src/core/auth/guards/jwt-auth.guard';
 import { TrocaSenhaDto } from '../dtos/troca-senha.dto';
 import { UsuarioService } from '../services/usuario.service';
 import { RespostaHttpService } from "src/core/http/services/resposta-http.service";
-import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiTags, ApiOperation, ApiBody } from '@nestjs/swagger';
 
 @UseGuards(JwtAuthGuard)
 @ApiBearerAuth()
@@ -14,6 +14,8 @@ export class UsuarioComAuthController {
   constructor(private usuarioService: UsuarioService,
     private respostaHttp: RespostaHttpService) { }
 
+  @ApiOperation({ summary: "Realiza a troca de senha do usuario" })
+  @ApiBody({ type: TrocaSenhaDto })
   @Post("trocasenha")
   public async trocasenha(@Request() request: any, @Body() senhas: TrocaSenhaDto) {
     return await this.usuarioService.trocasenha(request.user, senhas).then(() => {
@@ -25,6 +27,7 @@ export class UsuarioComAuthController {
 
   }
 
+  @ApiOperation({ summary: "Mostra dados do perfil logado" })
   @Get("perfil")
   public async perfil(@Request() request: any) {
     return await this.usuarioService.perfil(request.user).then((resposta) => {
@@ -34,3 +37,5 @@ export class UsuarioComAuthController {
     })
   }
 }
+
+

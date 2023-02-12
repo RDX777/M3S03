@@ -23,11 +23,11 @@ export class CriaUsuarioDto {
   @IsString()
   @MinLength(8)
   @MaxLength(64)
-  @ApiProperty({ name: "senha", "example": "senha" })
+  @ApiProperty({ name: "senha", "example": "senha_com_8_digitos" })
   readonly senha: string;
 
   @Match(["senha", "equals"])
-  @ApiProperty({ name: "confirmaSenha", "example": "confirma_senha" })
+  @ApiProperty({ name: "confirmaSenha", "example": "senha_com_8_digitos" })
   readonly confirmaSenha: string;
 
   @ApiProperty({ name: "telefone", "example": "19999999999" })
