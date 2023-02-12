@@ -6,7 +6,7 @@ import { AuthService } from "../services/auth.service";
 import { UsuarioService } from "src/usuarios/services/usuario.service";
 import { NestResponse } from "src/core/http/nest-response";
 import { NestResponseBuilder } from "src/core/http/nest-response-builder";
-import { ApiBody, ApiOperation, ApiTags } from "@nestjs/swagger";
+import { ApiBody, ApiOperation, ApiResponse, ApiTags } from "@nestjs/swagger";
 
 //@UseGuards(JwtAuthGuard) //Autenticação
 // @Roles("") // Autorização
@@ -20,6 +20,14 @@ export class AuthController {
   @ApiOperation({ summary: "Cria token para acesso" })
   @ApiBody({ type: CredenciaisDTO })
   @Post("token/cria")
+  @ApiResponse({
+    status: HttpStatus.OK,
+    description: "token",
+  })
+  @ApiResponse({
+    status: HttpStatus.UNAUTHORIZED,
+    description: "Unauthorized",
+  })
   public async criaToken(@Body() credenciais: CredenciaisDTO) {
     const token = await this.authService.criaToken(credenciais);
     return new NestResponseBuilder()
