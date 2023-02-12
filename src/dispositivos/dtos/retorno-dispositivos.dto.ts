@@ -3,7 +3,7 @@ import { RetornoDispositivoFiltradoDto } from "./retorno-dispositivo-filtrado.dt
 
 export class RetornoDispositivoDto {
 
-  @ApiProperty({ name: "nomeUsuario", type: "string" })
+  @ApiProperty({ name: "nomeUsuario", type: "string", example: "Nome do usuario" })
   readonly nomeUsuario: string;
 
   @ApiProperty({ name: "listaDispositivos", type: () => RetornoDispositivoFiltradoDto, isArray: true })

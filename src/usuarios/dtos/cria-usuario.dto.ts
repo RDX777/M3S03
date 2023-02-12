@@ -9,28 +9,28 @@ export class CriaUsuarioDto {
 
   @IsString()
   @IsNotEmpty()
-  @ApiProperty({ name: "nomeCompleto", "example": "Nome Completo do usuario" })
+  @ApiProperty({ name: "nomeCompleto", type: "string", "example": "Nome Completo do usuario" })
   readonly nomeCompleto: string;
 
-  @ApiProperty({ name: "urlFoto", "example": "http://localhost:3000/foto/fotopadrao.jpg" })
+  @ApiProperty({ name: "urlFoto", type: "string", "example": "http://localhost:3000/foto/fotopadrao.jpg" })
   readonly urlFoto: string;
 
   @IsEmail()
   @IsNotEmpty()
-  @ApiProperty({ name: "email", "example": "asd@asd.com" })
+  @ApiProperty({ name: "email", type: "string", "example": "asd@asd.com" })
   readonly email: string;
 
   @IsString()
   @MinLength(8)
   @MaxLength(64)
-  @ApiProperty({ name: "senha", "example": "senha_com_8_digitos" })
+  @ApiProperty({ name: "senha", type: "string", "example": "senha_com_8_digitos" })
   readonly senha: string;
 
   @Match(["senha", "equals"])
-  @ApiProperty({ name: "confirmaSenha", "example": "senha_com_8_digitos" })
+  @ApiProperty({ name: "confirmaSenha", type: "string", "example": "senha_com_8_digitos" })
   readonly confirmaSenha: string;
 
-  @ApiProperty({ name: "telefone", "example": "19999999999" })
+  @ApiProperty({ name: "telefone", type: "string", "example": "19999999999" })
   readonly telefone: string;
 
   @ValidateNested()

@@ -9,10 +9,10 @@ export class VinculoDispositivoInDto {
 
   @IsNotEmpty()
   @IsEnum(LocalDispositivo)
-  @ApiProperty({ name: "local", enum: LocalDispositivo })
+  @ApiProperty({ name: "local", enum: LocalDispositivo, example: "sala" })
   readonly local: LocalDispositivo;
 
-  @ApiProperty({ name: "enderecoIP", "example": "191.192.192.192", "type": "string" })
+  @ApiProperty({ name: "enderecoIP", type: "string", example: "191.192.192.192" })
   readonly enderecoIP: string;
 
 }
