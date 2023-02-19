@@ -4,11 +4,11 @@ require('dotenv-flow').config();
 
 export const AppDataSource = new DataSource({
   type: 'postgres',
-  host: process.env.DB_HOST,
-  port: parseInt(process.env.DB_PORT) || 5432,
-  username: process.env.DB_USER,
-  password: process.env.DB_PASS,
-  database: process.env.DB_NAME,
+  host: process.env.PGHOST,
+  port: parseInt(process.env.PGPORT) || 5432,
+  username: process.env.PGUSER,
+  password: process.env.PGPASSWORD,
+  database: process.env.PGDATABASE,
   entities: [
     __dirname + '/../../**/**/*.entity{.ts,.js}',
     // "dist/**/**/*.entity.js" // Corrigindo possível problema de importação da Entity.          
