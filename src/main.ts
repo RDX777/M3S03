@@ -11,7 +11,7 @@ async function bootstrap() {
     logger: ['error', 'warn']
   });
   const configService = app.get(ConfigService);
-  const PORT = configService.get<number>('port') || 3000;
+  const PORT = process.env.PORT || 3000;
 
   app.useGlobalPipes(
     new ValidationPipe({
